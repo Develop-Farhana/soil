@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        /* Reset some basic styles */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Set a background color and center the content */
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Style the login container */
+        
+        #admin-login {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        /* Style the heading */
+        
+        #admin-login h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        /* Style the input fields */
+        
+        #admin-login input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        /* Style the login button */
+        
+        #login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        #login-btn:hover {
+            background-color: #0056b3;
+        }
+        /* Add some focus effects */
+        
+        input:focus,
+        #login-btn:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="admin-login">
+        <h2>Admin Login</h2>
+        <input type="email" id="admin-email" placeholder="Enter email" />
+        <input type="password" id="admin-password" placeholder="Enter password" />
+        <button id="login-btn">Login</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script type="module" src="js/admin-login.js"></script>
+</body>
+
+</html>

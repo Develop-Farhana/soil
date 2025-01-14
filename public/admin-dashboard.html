@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="admin-dashboard" style="display:none;">
+        <h2>Welcome, Admin</h2>
+        <a href="soil-details.html">
+            <button id="post-soil-btn">Post Soil Details</button></a>
+        <button id="post-distributor-btn">Post Distributor Details</button>
+        <button id="logout-btn">Logout</button>
+    </div>
+
+    <div id="post-soil" style="display:none;">
+        <h3>Post Soil Details</h3>
+        <input type="text" id="soil-name" placeholder="Soil Name">
+        <input type="text" id="soil-description" placeholder="Description">
+        <button id="submit-soil">Submit</button>
+    </div>
+
+    <div id="post-distributor" style="display:none;">
+        <h3>Post Distributor Details</h3>
+        <input type="text" id="distributor-name" placeholder="Distributor Name">
+        <input type="text" id="distributor-contact" placeholder="Contact Details">
+        <button id="submit-distributor">Submit</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Soil Details</title>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <script type="module" src="js/soil-details.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Post Soil Details</h1>
+    <form id="soil-form">
+        <label for="soil-name">Soil Name:</label>
+        <input type="text" id="soil-name" required><br>
+
+        <label for="soil-type">Soil Type:</label>
+        <input type="text" id="soil-type" required><br>
+
+        <label for="soil-structure">Soil Structure:</label>
+        <input type="text" id="soil-structure" required><br>
+
+        <label for="soil-degradation">Soil Degradation:</label>
+        <input type="text" id="soil-degradation" required><br>
+
+        <label for="soil-description">Soil Description:</label>
+        <textarea id="soil-description" required></textarea><br>
+
+        <button type="button" id="submit-soil-details">Post Soil Details</button>
+    </form>
+
+
+</body>
+
+</html>

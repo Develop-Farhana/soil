@@ -1,0 +1,151 @@
+/* General styling */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h2,
+h3 {
+    color: #333;
+    text-align: center;
+}
+
+
+/* Login Section */
+
+#user-login {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 100%;
+}
+
+#user-login input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#user-login button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#user-login button:hover {
+    background-color: #45a049;
+}
+
+
+/* User Dashboard Section */
+
+#user-dashboard {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user-dashboard button {
+    width: 80%;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#user-dashboard button:hover {
+    background-color: #0b7dda;
+}
+
+
+/* Soil and Distributor Details Section */
+
+#soil-details,
+#distributor-details {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#soil-list,
+#distributor-list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#soil-list div,
+#distributor-list div {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+    width: calc(33% - 10px);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#soil-list div h4,
+#distributor-list div h4 {
+    margin: 5px 0;
+    color: #333;
+}
+
+#soil-list div p,
+#distributor-list div p {
+    color: #555;
+}
+
+
+/* Media Query for responsiveness */
+
+@media (max-width: 768px) {
+    #user-login,
+    #user-dashboard,
+    #soil-details,
+    #distributor-details {
+        max-width: 90%;
+    }
+    #soil-list div,
+    #distributor-list div {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    #soil-list div,
+    #distributor-list div {
+        width: 100%;
+    }
+}

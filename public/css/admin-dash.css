@@ -1,0 +1,123 @@
+/* Basic Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+#admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+/* Content Section */
+
+#content {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+button.nav-btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button.nav-btn:hover {
+    background-color: #2980b9;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+td {
+    color: #555;
+}
+
+#logout-btn {
+    background-color: #e74c3c;
+    margin-top: 20px;
+}
+
+#logout-btn:hover {
+    background-color: #c0392b;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    #admin-dashboard {
+        flex-direction: column;
+        align-items: center;
+    }
+    #content {
+        width: 100%;
+        max-width: 100%;
+    }
+    button,
+    #logout-btn {
+        width: 100%;
+        padding: 12px;
+    }
+    table {
+        width: 100%;
+    }
+    th,
+    td {
+        padding: 8px;
+    }
+}
