@@ -1,0 +1,71 @@
+[{
+        "soilName": "Loamy Soil",
+        "soilType": "Loam",
+        "soilStructure": "Granular",
+        "soilDegradation": "Low",
+        "soilDescription": "Loamy soil is rich in nutrients, well-drained, and ideal for agriculture."
+    },
+    {
+        "soilName": "Sandy Soil",
+        "soilType": "Sand",
+        "soilStructure": "Single-grain",
+        "soilDegradation": "Moderate",
+        "soilDescription": "Sandy soil has large particles, is quick-draining, and suitable for certain crops like peanuts."
+    },
+    {
+        "soilName": "Clay Soil",
+        "soilType": "Clay",
+        "soilStructure": "Blocky",
+        "soilDegradation": "High",
+        "soilDescription": "Clay soil retains water well but is prone to waterlogging and compaction."
+    },
+    {
+        "soilName": "Silty Soil",
+        "soilType": "Silt",
+        "soilStructure": "Platy",
+        "soilDegradation": "Low",
+        "soilDescription": "Silty soil has fine particles, good water retention, and is fertile for farming."
+    },
+    {
+        "soilName": "Peaty Soil",
+        "soilType": "Peat",
+        "soilStructure": "Organic",
+        "soilDegradation": "Low",
+        "soilDescription": "Peaty soil is rich in organic matter, acidic, and good for horticulture."
+    },
+    {
+        "soilName": "Chalky Soil",
+        "soilType": "Chalk",
+        "soilStructure": "Blocky",
+        "soilDegradation": "Moderate",
+        "soilDescription": "Chalky soil is alkaline, drains quickly, and may require additional nutrients for farming."
+    },
+    {
+        "soilName": "Saline Soil",
+        "soilType": "Saline",
+        "soilStructure": "Columnar",
+        "soilDegradation": "High",
+        "soilDescription": "Saline soil has high salt content and poses challenges for plant growth."
+    },
+    {
+        "soilName": "Desert Soil",
+        "soilType": "Arid",
+        "soilStructure": "Single-grain",
+        "soilDegradation": "High",
+        "soilDescription": "Desert soil is sandy, has low fertility, and is found in arid regions."
+    },
+    {
+        "soilName": "Alluvial Soil",
+        "soilType": "Alluvial",
+        "soilStructure": "Layered",
+        "soilDegradation": "Low",
+        "soilDescription": "Alluvial soil is fertile and typically found near rivers, making it excellent for agriculture."
+    },
+    {
+        "soilName": "Black Soil",
+        "soilType": "Regur",
+        "soilStructure": "Crumbly",
+        "soilDegradation": "Moderate",
+        "soilDescription": "Black soil is rich in calcium carbonate and suitable for growing cotton."
+    }
+]

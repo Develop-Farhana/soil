@@ -43,7 +43,8 @@ submitButton.addEventListener("click", function() {
             soilForm.reset(); // Reset the form after successful submission
 
             // Redirect to the soil-list.html page
-            window.location.href = "soil-list.html";
+            window.location.href = "admin.html";
+
         }).catch((error) => {
             console.error("Error posting soil details:", error);
         });

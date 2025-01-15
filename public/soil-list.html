@@ -8,7 +8,7 @@
     <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
     <script type="module" src="js/soil-list.js" defer></script>
-    <link rel="stylesheet" href="css/s.css">
+
 </head>
 <style>
     body {
@@ -23,15 +23,33 @@
         background-color: #4caf50;
         color: white;
         text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    #search-container {
+        display: flex;
+        align-items: center;
     }
     
     #search-bar {
         width: 60%;
         padding: 10px;
-        margin: 10px auto;
-        display: block;
+        margin: 10px;
         border: 1px solid #ddd;
         border-radius: 4px;
+    }
+    
+    #distributor-link {
+        margin-left: 20px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    #distributor-link:hover {
+        text-decoration: underline;
     }
     
     .cards-container {
@@ -96,16 +114,17 @@
 <body>
     <header>
         <h1>All Soil Details</h1>
-        <input type="text" id="search-bar" placeholder="Search by name or type" onkeyup="filterSoilData()">
+        <div id="search-container">
+            <input type="text" id="search-bar" placeholder="Search by name or type" onkeyup="filterSoilData()">
+            <a href="dist-list.html" id="distributor-link">Click here for Distributor</a>
+        </div>
     </header>
     <main>
         <div id="soil-cards-container" class="cards-container">
             <!-- Soil cards will go here -->
         </div>
     </main>
-    <footer>
-        <button onclick="fetchSoilData()">Refresh Data</button>
-    </footer>
+
     <script src="js/soil-list.js"></script>
 </body>
 

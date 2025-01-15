@@ -5,28 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distributor Information</title>
-    <link rel="stylesheet" href="css/dist.css">
+    <link rel="stylesheet" href="css/admin-dash.css">
+    <!-- Make sure this includes styles for the dashboard -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- General styles -->
 </head>
 
 <body>
-    <div class="container">
-        <h2>Distributor Information</h2>
-        <form id="distributorForm">
-            <label for="distributorName">Distributor Name:</label>
-            <input type="text" id="distributorName" required>
-            <label for="companyName">Company Name:</label>
-            <input type="text" id="companyName" required>
-            <label for="experience">Experience (in years):</label>
-            <input type="number" id="experience" required>
-            <button type="submit">Submit</button>
-        </form>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <nav>
+                <ul>
+                    <li><a href="soil-details.html">Post Soil Details</a></li>
+                    <li><a href="distributor-details.html" class="active">Post Distributor Details</a></li>
+                    <li><a href="analytics.html">View Analytics</a></li>
+                </ul>
+            </nav>
+            <button id="logout-btn">Logout</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Post Distributor Details</h1>
+            </header>
+            <section class="form-container">
+                <form id="distributorForm">
+                    <label for="distributorName">Distributor Name:</label>
+                    <input type="text" id="distributorName" required>
+                    <label for="companyName">Company Name:</label>
+                    <input type="text" id="companyName" required>
+                    <label for="experience">Experience (in years):</label>
+                    <input type="number" id="experience" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </section>
+        </main>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-
     <script type="module" src="js/distributor.js"></script>
-
 </body>
 
 </html>

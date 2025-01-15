@@ -10,30 +10,122 @@
     <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
     <script type="module" src="js/soil-details.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-dash.css">
 </head>
 
+<style>
+    /* Main Content */
+    
+    .main-content {
+        margin-left: 250px;
+        padding: 20px;
+        width: calc(100% - 250px);
+    }
+    
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    label {
+        font-size: 1.1em;
+        color: #555;
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+    
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1em;
+    }
+    
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 1.1em;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+    
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+    
+    form input:focus,
+    form textarea:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+</style>
+
 <body>
-    <h1>Post Soil Details</h1>
-    <form id="soil-form">
-        <label for="soil-name">Soil Name:</label>
-        <input type="text" id="soil-name" required><br>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <nav>
+                <ul>
+                    <li><a href="soil-details.html" style="color: white; font-weight: bold; border-left: 4px solid #f4f4f9; background-color: wheat; padding-left: 15px;">Post Soil Details</a></li>
+                    <li><a href="distributor-details.html">Post Distributor Details</a></li>
+                    <li><a href="analytics.html">View Analytics</a></li>
+                </ul>
+            </nav>
+            <button id="logout-btn">Logout</button>
+        </aside>
 
-        <label for="soil-type">Soil Type:</label>
-        <input type="text" id="soil-type" required><br>
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Post Soil Details</h1>
+            </header>
+            <form id="soil-form">
+                <label for="soil-name">Soil Name:</label>
+                <input type="text" id="soil-name" required><br>
 
-        <label for="soil-structure">Soil Structure:</label>
-        <input type="text" id="soil-structure" required><br>
+                <label for="soil-type">Soil Type:</label>
+                <input type="text" id="soil-type" required><br>
 
-        <label for="soil-degradation">Soil Degradation:</label>
-        <input type="text" id="soil-degradation" required><br>
+                <label for="soil-structure">Soil Structure:</label>
+                <input type="text" id="soil-structure" required><br>
 
-        <label for="soil-description">Soil Description:</label>
-        <textarea id="soil-description" required></textarea><br>
+                <label for="soil-degradation">Soil Degradation:</label>
+                <input type="text" id="soil-degradation" required><br>
 
-        <button type="button" id="submit-soil-details">Post Soil Details</button>
-    </form>
+                <label for="soil-description">Soil Description:</label>
+                <textarea id="soil-description" required></textarea><br>
 
-
+                <button type="button" id="submit-soil-details">Post Soil Details</button>
+            </form>
+        </main>
+    </div>
 </body>
 
 </html>

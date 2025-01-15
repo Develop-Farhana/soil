@@ -6,13 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distributor Information</title>
     <link rel="stylesheet" href="css/dist-list.css">
-
 </head>
+<style>
+    header {
+        padding: 20px;
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    #search-bar {
+        padding: 10px;
+        width: 250px;
+        margin: 20px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+</style>
 
 <body>
-    <div class="container">
-        <h2>Distributor Information</h2>
+    <header class="main-header">
+        <h1>Distributor Information</h1>
 
+        <a href="soil-list.html" id="distributor-link">Click here for Soil</a>
+
+    </header>
+
+    <!-- Search Bar -->
+
+
+    <div class="container">
         <!-- Cards to display distributor information -->
         <div class="card-container" id="distributorCards">
             <!-- Data cards will be inserted here dynamically -->

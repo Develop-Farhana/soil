@@ -1,3 +1,4 @@
+// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
 import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 
@@ -68,6 +69,7 @@ document.getElementById('distributorForm').addEventListener('submit', function(e
         alert('Distributor Information Saved!');
         document.getElementById('distributorForm').reset();
         fetchDistributors(); // Refresh the displayed cards
+        window.location.href = 'admin.html'; // Redirect to admin.html
     }).catch((error) => {
         alert('Error saving data: ' + error.message);
     });
