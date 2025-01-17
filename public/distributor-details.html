@@ -4,49 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distributor Information</title>
-    <link rel="stylesheet" href="css/admin-dash.css">
-    <!-- Make sure this includes styles for the dashboard -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- General styles -->
+    <title>Distributor Details</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    form {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    input {
+        margin: 5px;
+        padding: 10px;
+        width: 200px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    
+    button.delete {
+        background-color: red;
+    }
+    
+    button.edit {
+        background-color: yellow;
+    }
+</style>
 
 <body>
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <h2>Admin Dashboard</h2>
-            <nav>
-                <ul>
-                    <li><a href="soil-details.html">Post Soil Details</a></li>
-                    <li><a href="distributor-details.html" class="active">Post Distributor Details</a></li>
-                    <li><a href="analytics.html">View Analytics</a></li>
-                </ul>
-            </nav>
-            <button id="logout-btn">Logout</button>
-        </aside>
+    <h1>Distributor Details</h1>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="dashboard-header">
-                <h1>Post Distributor Details</h1>
-            </header>
-            <section class="form-container">
-                <form id="distributorForm">
-                    <label for="distributorName">Distributor Name:</label>
-                    <input type="text" id="distributorName" required>
-                    <label for="companyName">Company Name:</label>
-                    <input type="text" id="companyName" required>
-                    <label for="experience">Experience (in years):</label>
-                    <input type="number" id="experience" required>
-                    <button type="submit">Submit</button>
-                </form>
-            </section>
-        </main>
-    </div>
+    <!-- Add Distributor Form -->
+    <form id="distributorForm">
+        <input type="hidden" id="distributor-id">
+        <input type="text" id="distributorName" placeholder="Distributor Name" required>
+        <input type="email" id="distributorEmail" placeholder="Distributor Email" required>
+        <input type="text" id="distributorProduct" placeholder="Product Type" required>
+        <button type="submit" id="submit-btn">Add Distributor</button>
+    </form>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <table>
+        <thead>
+            <tr>
+                <th>Distributor Name</th>
+                <th>Distributor Email</th>
+                <th>Product Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="distributor-list"></tbody>
+    </table>
+
+
     <script type="module" src="js/distributor.js"></script>
 </body>
 

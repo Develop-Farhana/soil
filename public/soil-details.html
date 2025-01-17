@@ -4,128 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Soil Details</title>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-    <script type="module" src="js/soil-details.js" defer></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/admin-dash.css">
+    <title>Soil Details Management</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <style>
-    /* Main Content */
-    
-    .main-content {
-        margin-left: 250px;
-        padding: 20px;
-        width: calc(100% - 250px);
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
     }
     
-    h1 {
-        color: #333;
-        margin-bottom: 20px;
+    h2 {
+        color: #4CAF50;
     }
     
-    form {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 600px;
-    }
-    
-    label {
-        font-size: 1.1em;
-        color: #555;
-        margin-bottom: 5px;
-        display: inline-block;
-    }
-    
-    input[type="text"],
-    textarea {
-        width: 100%;
+    #formContainer input {
+        margin: 5px;
         padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 1em;
-    }
-    
-    textarea {
-        resize: vertical;
-        min-height: 100px;
     }
     
     button {
+        padding: 10px;
         background-color: #4CAF50;
         color: white;
         border: none;
-        padding: 10px 15px;
-        font-size: 1.1em;
-        border-radius: 4px;
         cursor: pointer;
+    }
+    
+    table {
         width: 100%;
-        transition: background-color 0.3s;
+        border-collapse: collapse;
+        margin-top: 20px;
     }
     
-    button:hover {
-        background-color: #45a049;
+    table,
+    th,
+    td {
+        border: 1px solid #ddd;
     }
     
-    button:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
     }
     
-    form input:focus,
-    form textarea:focus {
-        border-color: #4CAF50;
-        outline: none;
+    button.edit,
+    button.delete {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        margin: 2px;
     }
 </style>
 
 <body>
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <h2>Admin Dashboard</h2>
-            <nav>
-                <ul>
-                    <li><a href="soil-details.html" style="color: white; font-weight: bold; border-left: 4px solid #f4f4f9; background-color: wheat; padding-left: 15px;">Post Soil Details</a></li>
-                    <li><a href="distributor-details.html">Post Distributor Details</a></li>
-                    <li><a href="analytics.html">View Analytics</a></li>
-                </ul>
-            </nav>
-            <button id="logout-btn">Logout</button>
-        </aside>
+    <h2>Soil Details Management</h2>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="dashboard-header">
-                <h1>Post Soil Details</h1>
-            </header>
-            <form id="soil-form">
-                <label for="soil-name">Soil Name:</label>
-                <input type="text" id="soil-name" required><br>
+    <!-- Form to add soil details -->
+    <form id="soil-form">
+        <input type="hidden" id="soil-id">
+        <input type="text" id="soil-type" placeholder="Soil Type" required>
+        <input type="number" id="ph-level" placeholder="pH Level" required>
+        <input type="text" id="location" placeholder="Location" required>
+        <button type="submit" id="submit-btn">Add Soil</button>
+    </form>
 
-                <label for="soil-type">Soil Type:</label>
-                <input type="text" id="soil-type" required><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Soil Type</th>
+                <th>pH Level</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="soil-list"></tbody>
+    </table>
 
-                <label for="soil-structure">Soil Structure:</label>
-                <input type="text" id="soil-structure" required><br>
 
-                <label for="soil-degradation">Soil Degradation:</label>
-                <input type="text" id="soil-degradation" required><br>
-
-                <label for="soil-description">Soil Description:</label>
-                <textarea id="soil-description" required></textarea><br>
-
-                <button type="button" id="submit-soil-details">Post Soil Details</button>
-            </form>
-        </main>
-    </div>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"></script>
+    <script type="module" src="js/soil-details.js" defer></script>
 </body>
 
 </html>
