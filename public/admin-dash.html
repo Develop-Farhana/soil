@@ -14,7 +14,7 @@
     <div class="sidebar">
         <a href="#" onclick="showContent('soil')">Soil</a>
         <a href="#" onclick="showContent('distributor')">Distributor</a>
-        <a href="#" onclick="showContent('logout')">Logout</a>
+        <button id="logoutButton">Logout</button>
     </div>
 
     <!-- Main Content Area -->
@@ -24,14 +24,14 @@
         <!-- Soil Details Section -->
         <div id="soil" class="content hidden">
             <div class="card">
-                <h3>Soil Details Management</h3>
                 <form id="soil-form">
-                    <input type="hidden" id="soil-id">
-                    <input type="text" id="soil-type" placeholder="Soil Type" required>
-                    <input type="number" id="ph-level" placeholder="pH Level" required>
-                    <input type="text" id="location" placeholder="Location" required>
-                    <textarea id="description" placeholder="Description" rows="4" cols="50" required></textarea>
+                    <input type="text" id="soilType" placeholder="Soil Type" required>
+                    <input type="text" id="phLevel" placeholder="pH Level" required>
+                    <input type="text" id="moistureContent" placeholder="Moisture Content" required>
+                    <input type="text" id="nutrientLevel" placeholder="Nutrient Level" required>
+                    <!-- New field -->
                     <button type="submit" id="submit-btn">Add Soil</button>
+                    <input type="hidden" id="soil-id">
                 </form>
 
                 <table>
@@ -39,11 +39,15 @@
                         <tr>
                             <th>Soil Type</th>
                             <th>pH Level</th>
-                            <th>Location</th>
+                            <th>Moisture Content</th>
+                            <th>Nutrient Level</th>
+                            <!-- New column -->
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="soil-list"></tbody>
+                    <tbody id="soil-list">
+                        <!-- Dynamic soil data will be inserted here -->
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -86,6 +90,20 @@
                 }
             });
         }
+        // Function to logout
+        function logout() {
+            // Clear session storage (or local storage, if you're using it)
+            sessionStorage.clear(); // Or localStorage.clear() if you're using localStorage
+
+            // Optionally, remove cookies if needed
+            // document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+            // Redirect to the login page or home page
+            window.location.href = '/user.html'; // Or '/home' if you want to go to a home page
+        }
+
+        // Adding event listener to the logout button
+        document.getElementById('logoutButton').addEventListener('click', logout);
     </script>
 
     <!-- Firebase JS SDK -->
@@ -93,7 +111,7 @@
     <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"></script>
 
     <!-- Custom JS for handling Soil and Distributor data -->
-    <script type="module" src="js/soil-details.js" defer></script>
+    <script type="module" src="js/admin-soil.js" defer></script>
     <script type="module" src="js/distributor.js" defer></script>
 
 </body>
