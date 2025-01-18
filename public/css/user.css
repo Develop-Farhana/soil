@@ -1,89 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+/* Global Reset */
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    box-sizing: border-box;
 }
 
+
+/* Body and Background */
+
 body {
-    background-color: #0583D2;
+    font-family: Arial, sans-serif;
+    background-color: #f7f1e1;
+    /* Light wheat background */
+    color: #5a4a3e;
+    /* Dark brown text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../img/soil-texture.jpg');
+    /* Soil texture background */
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Login Container */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Slight white transparency */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Main Section (Login Form) */
+
+#main {
+    display: block;
+    text-align: center;
 }
 
 h1 {
-    margin-bottom: 8%;
-    text-align: center;
-    font-family: "Fredoka One", cursive;
-    color: #0583D2;
-    letter-spacing: 0.1em;
+    font-size: 2.5rem;
+    color: #3c2f2a;
+    /* Dark brown color */
+    margin-bottom: 20px;
 }
 
-p {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid #000;
-    line-height: 0.1em;
-}
 
-p span {
-    background: #fff;
-    padding: 0 10px;
-}
+/* Input Fields */
 
 input {
-    margin-bottom: 3%;
-}
-
-input:last-of-type {
-    margin-bottom: 0;
-}
-
-input,
-button {
-    padding: 3%;
     width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 2px solid #a67c52;
+    /* Wheat color border */
+    border-radius: 5px;
+    background-color: #f0e4d7;
+    /* Wheat color background */
+    color: #3c2f2a;
+    font-size: 1rem;
 }
 
-.login-container {
-    background-color: white;
-    padding: 7%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    /* horizontal align */
-    width: 40vw;
-    margin-left: 30vw;
-    /* vertical align */
-    height: 70vh;
-    margin-top: 15vh;
+input:focus {
+    outline: none;
+    border-color: #8b5e3c;
+    /* Darker brown when focused */
+    background-color: #f7e1c2;
+    /* Lighter wheat color */
 }
 
-#submit,
-#create-acct-btn {
-    background-color: #0583D2;
+
+/* Buttons */
+
+button {
+    background-color: #a67c52;
+    /* Wheat color button */
     color: white;
     border: none;
-    margin-top: 5%;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    cursor: pointer;
-    opacity: 0.8;
-    transition: 0.3s;
+    background-color: #8b5e3c;
+    /* Darker wheat color on hover */
 }
 
-#sign-up {
-    border: none;
+
+/* Sign Up Section */
+
+#sign-up,
+#create-acct-btn,
+#return-btn {
+    background-color: #8b5e3c;
+    /* Darker wheat for different buttons */
 }
 
-#create-acct {
-    display: none;
+
+/* Link Styles (For 'or' or other elements) */
+
+p span {
+    font-weight: bold;
+    color: #3c2f2a;
+    /* Dark brown color */
+    font-size: 1.2rem;
 }
 
 #return-btn {
-    background: none;
-    color: grey;
-    text-decoration: underline;
-    border: none;
-    margin-top: 3%;
+    background-color: #d48f56;
+    /* Light brown color for return button */
+}
+
+
+/* Account Creation Section */
+
+#create-acct {
+    display: none;
+    /* Hidden by default, will be shown on "Sign Up" click */
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f9f4e4;
+    /* Light beige background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Show the account creation form */
+
+#create-acct.show {
+    display: block;
+}
+
+
+/* Adjustments for mobile responsiveness */
+
+@media (max-width: 600px) {
+    .login-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    input,
+    button {
+        width: 100%;
+    }
 }

@@ -81,7 +81,7 @@ submitButton.addEventListener("click", function() {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            window.location.href = "soil-list.html";
+            window.location.href = "user-dash.html";
 
             // ...
         })

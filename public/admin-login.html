@@ -16,8 +16,9 @@
         /* Set a background color and center the content */
         
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f1;
+            /* Light greenish background for an earthy feel */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,52 +28,73 @@
         
         #admin-login {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 350px;
             text-align: center;
+            border: 2px solid #c7d7c1;
+            /* Subtle border to match earthy tones */
         }
         /* Style the heading */
         
         #admin-login h2 {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 20px;
-            color: #333;
+            color: #4b7f38;
+            /* Deep green for a natural vibe */
+            font-family: 'Georgia', serif;
+            /* Elegant font to give a natural, rustic feel */
         }
         /* Style the input fields */
         
         #admin-login input {
             width: 100%;
             padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
+            margin: 12px 0;
+            border: 1px solid #b8c8a0;
+            /* Soft greenish border */
             border-radius: 5px;
             font-size: 16px;
+            background-color: #f8f9f3;
+            /* Slightly off-white for a natural feel */
+            transition: all 0.3s ease-in-out;
+        }
+        /* Focus Effect for Inputs */
+        
+        #admin-login input:focus {
+            border-color: #4b7f38;
+            /* Deep green focus for soil theme */
+            outline: none;
+            box-shadow: 0 0 5px rgba(75, 127, 56, 0.4);
+            /* Light green shadow */
         }
         /* Style the login button */
         
         #login-btn {
             width: 100%;
-            padding: 12px;
-            background-color: #007bff;
+            padding: 14px;
+            background-color: #4b7f38;
+            /* Deep green button */
             color: #fff;
-            font-size: 16px;
+            font-size: 18px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+        /* Button Hover Effect */
         
         #login-btn:hover {
-            background-color: #0056b3;
+            background-color: #3b6730;
+            /* Darker green */
         }
-        /* Add some focus effects */
+        /* Add some focus effects for the button */
         
-        input:focus,
         #login-btn:focus {
             outline: none;
-            border-color: #007bff;
+            border: 2px solid #4b7f38;
+            /* Focus border for button */
         }
     </style>
 </head>
@@ -80,8 +102,8 @@
 <body>
     <div id="admin-login">
         <h2>Admin Login</h2>
-        <input type="email" id="admin-email" placeholder="Enter email" />
-        <input type="password" id="admin-password" placeholder="Enter password" />
+        <input type="email" id="admin-email" placeholder="Enter your email" />
+        <input type="password" id="admin-password" placeholder="Enter your password" />
         <button id="login-btn">Login</button>
     </div>
 

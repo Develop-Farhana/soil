@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Farming Agent - Home</title>
+    <link rel="stylesheet" href="css/user-dash.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="javascript:void(0)" onclick="showContent('soil')">Soil</a>
+            <a href="javascript:void(0)" onclick="showContent('distributor')">Distributor</a>
+            <a href="javascript:void(0)" onclick="logout()">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Background section with the image -->
+    <div class="bg-section">
+        Welcome to Soil Farming Agent
+    </div>
+
+    <div class="container">
+
+        <!-- Default Content when nothing is selected -->
+        <div id="default-content" class="content">
+            <h2>Explore the World of Soil</h2>
+            <p>Discover the different types of soil and their benefits for farming.</p>
+            <div class="default-soil-image">
+                <img src="img/soil.jpg" alt="Soil Image">
+            </div>
+        </div>
+
+        <div id="soil" class="content">
+            <h2>Soil Information</h2>
+            <div class="soil-cards-container" id="soil-list">
+                <!-- Dynamic soil data will be inserted here in card format -->
+            </div>
+        </div>
+
+        <div id="distributor" class="content">
+            <div id="distributor-list"></div>
+        </div>
+    </div>
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js"></script>
+    <script>
+        function showContent(section) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content');
+            sections.forEach((section) => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(section).style.display = 'block';
+        }
+
+        function logout() {
+            // Redirect to logout page or handle logout logic here
+            alert('You have logged out!');
+            window.location.href = '/user.html'; // Replace with your logout URL
+        }
+
+        // Initially show the default content (before any section is selected)
+        showContent('default-content');
+    </script>
+
+    <script type="module" src="js/soil-list.js" defer></script>
+    <script type="module" src="js/dist-list.js"></script>
+</body>
+
+</html>

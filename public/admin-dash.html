@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin-dash.css">
+</head>
+
+<body>
+
+    <!-- Side Navigation -->
+    <div class="sidebar">
+        <a href="#" onclick="showContent('soil')">Soil</a>
+        <a href="#" onclick="showContent('distributor')">Distributor</a>
+        <a href="#" onclick="showContent('logout')">Logout</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <h1>Welcome to the Admin Dashboard</h1>
+
+        <!-- Soil Details Section -->
+        <div id="soil" class="content hidden">
+            <div class="card">
+                <h3>Soil Details Management</h3>
+                <form id="soil-form">
+                    <input type="hidden" id="soil-id">
+                    <input type="text" id="soil-type" placeholder="Soil Type" required>
+                    <input type="number" id="ph-level" placeholder="pH Level" required>
+                    <input type="text" id="location" placeholder="Location" required>
+                    <textarea id="description" placeholder="Description" rows="4" cols="50" required></textarea>
+                    <button type="submit" id="submit-btn">Add Soil</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Soil Type</th>
+                            <th>pH Level</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="soil-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Distributor Details Section -->
+        <div id="distributor" class="content hidden">
+            <div class="card">
+                <h3>Distributor Details Management</h3>
+                <form id="distributorForm">
+                    <input type="hidden" id="distributor-id">
+                    <input type="text" id="distributorName" placeholder="Distributor Name" required>
+                    <input type="email" id="distributorEmail" placeholder="Distributor Email" required>
+                    <input type="text" id="distributorProduct" placeholder="Product Type" required>
+                    <button type="submit" id="submit-distributor-btn">Add Distributor</button>
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Distributor Name</th>
+                            <th>Distributor Email</th>
+                            <th>Product Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="distributor-list"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the selected content and hide others
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                if (section.id === contentId) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+
+    <!-- Firebase JS SDK -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"></script>
+
+    <!-- Custom JS for handling Soil and Distributor data -->
+    <script type="module" src="js/soil-details.js" defer></script>
+    <script type="module" src="js/distributor.js" defer></script>
+
+</body>
+
+</html>

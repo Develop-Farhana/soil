@@ -21,8 +21,8 @@ document.getElementById('login-btn').addEventListener('click', function() {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Redirect to dashboard after successful login
-            window.location.href = 'admin.html';
+            // Redirect to admin dashboard after successful login
+            window.location.href = 'admin-dash.html'; // Updated redirect URL
         })
         .catch((error) => {
             console.error('Login Failed:', error.message);

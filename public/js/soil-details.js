@@ -1,6 +1,6 @@
-// Import Firebase and Firebase Database functions
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-import { getDatabase, ref, set, get, remove } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+// Import Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -14,163 +14,131 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const db = getFirestore(app);
 
-// Get references
+// Elements from the HTML
 const soilForm = document.getElementById("soil-form");
-const soilType = document.getElementById("soil-type");
-const phLevel = document.getElementById("ph-level");
-const location = document.getElementById("location");
+const soilIdInput = document.getElementById("soil-id");
+const soilTypeInput = document.getElementById("soil-type");
+const phLevelInput = document.getElementById("ph-level");
+const locationInput = document.getElementById("location");
+const submitBtn = document.getElementById("submit-btn");
 const soilList = document.getElementById("soil-list");
-const soilId = document.getElementById("soil-id");
 
-// Add soil details to Firebase and immediately render the new soil in the table
-function addSoilToFirebase(type, ph, loc) {
-    const soilRef = ref(database, 'soilDetails/' + Date.now());
-    set(soilRef, {
-        type: type,
-        phLevel: ph,
-        location: loc
-    }).then(() => {
-        // After adding the soil, directly render the new soil in the table
-        const newSoil = {
-            type: type,
-            phLevel: ph,
-            location: loc
-        };
-        renderSoilRow(newSoil, soilRef.key); // Render the new row with the soil
-    });
-}
+// Function to add soil details
+const addSoil = async(e) => {
+    e.preventDefault();
 
-// Update soil details in Firebase
-function updateSoilInFirebase(id, type, ph, loc) {
-    const soilRef = ref(database, 'soilDetails/' + id);
-    set(soilRef, {
-        type: type,
-        phLevel: ph,
-        location: loc
-    }).then(() => {
-        fetchSoils(); // Re-fetch soils to show updated data
-    });
-}
+    const soilType = soilTypeInput.value;
+    const phLevel = phLevelInput.value;
+    const location = locationInput.value;
 
-// Delete soil from Firebase
-function deleteSoilFromFirebase(id) {
-    const soilRef = ref(database, 'soilDetails/' + id);
-    remove(soilRef).then(() => {
-        fetchSoils(); // Re-fetch soils after deletion
-    });
-}
+    try {
+        // Add a new document to the Firestore collection
+        const docRef = await addDoc(collection(db, "soilDetails"), {
+            soilType,
+            phLevel,
+            location
+        });
 
-// Render soils list as a table
-function renderSoilList(soils) {
-    soilList.innerHTML = ''; // Clear the table body
-    for (let id in soils) {
-        const soil = soils[id];
-        const tr = document.createElement("tr");
+        console.log("Document written with ID: ", docRef.id);
+        resetForm();
+        loadSoils(); // Reload soil details
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+};
 
-        tr.innerHTML = `
-            <td>${soil.type}</td>
+// Function to delete soil details
+const deleteSoil = async(id) => {
+    try {
+        await deleteDoc(doc(db, "soilDetails", id));
+        console.log("Document successfully deleted!");
+        loadSoils(); // Reload soil details
+    } catch (e) {
+        console.error("Error deleting document: ", e);
+    }
+};
+
+// Function to edit soil details
+const editSoil = async(id) => {
+    const soilDoc = doc(db, "soilDetails", id);
+    const docSnap = await getDoc(soilDoc);
+    if (docSnap.exists()) {
+        const soil = docSnap.data();
+        soilIdInput.value = id;
+        soilTypeInput.value = soil.soilType;
+        phLevelInput.value = soil.phLevel;
+        locationInput.value = soil.location;
+        submitBtn.textContent = "Update Soil"; // Change button text for update
+    } else {
+        console.log("No such document!");
+    }
+};
+
+// Function to update soil details
+const updateSoil = async(e) => {
+    e.preventDefault();
+
+    const id = soilIdInput.value;
+    const soilType = soilTypeInput.value;
+    const phLevel = phLevelInput.value;
+    const location = locationInput.value;
+
+    const soilDoc = doc(db, "soilDetails", id);
+    try {
+        await updateDoc(soilDoc, {
+            soilType,
+            phLevel,
+            location
+        });
+
+        console.log("Document successfully updated!");
+        resetForm();
+        loadSoils(); // Reload soil details
+    } catch (e) {
+        console.error("Error updating document: ", e);
+    }
+};
+
+// Function to reset form
+const resetForm = () => {
+    soilForm.reset();
+    soilIdInput.value = "";
+    submitBtn.textContent = "Add Soil"; // Reset button text for add
+};
+
+// Function to load soil details
+const loadSoils = async() => {
+    const querySnapshot = await getDocs(collection(db, "soilDetails"));
+    soilList.innerHTML = ""; // Clear current list
+
+    querySnapshot.forEach((doc) => {
+        const soil = doc.data();
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${soil.soilType}</td>
             <td>${soil.phLevel}</td>
             <td>${soil.location}</td>
             <td>
-                <button class="edit-btn" data-id="${id}" style="background-color: green; color: white;">Edit</button>
-                <button class="delete-btn" data-id="${id}" style="background-color: red; color: white;">Delete</button>
+                <button class="edit" onclick="editSoil('${doc.id}')">Edit</button>
+                <button class="delete" onclick="deleteSoil('${doc.id}')">Delete</button>
             </td>
         `;
 
-        // Add event listener to the delete button
-        const deleteButton = tr.querySelector(".delete-btn");
-        deleteButton.addEventListener("click", () => {
-            deleteSoil(id);
-        });
-
-        // Add event listener to the edit button
-        const editButton = tr.querySelector(".edit-btn");
-        editButton.addEventListener("click", () => {
-            editSoil(id, soil.type, soil.phLevel, soil.location);
-        });
-
-        soilList.appendChild(tr);
-    }
-}
-
-// Function to render a single soil row (for immediate display after adding)
-function renderSoilRow(soil, id) {
-    const tr = document.createElement("tr");
-
-    tr.innerHTML = `
-        <td>${soil.type}</td>
-        <td>${soil.phLevel}</td>
-        <td>${soil.location}</td>
-        <td>
-            <button class="edit-btn" data-id="${id}" style="background-color: green; color: white;">Edit</button>
-            <button class="delete-btn" data-id="${id}" style="background-color: red; color: white;">Delete</button>
-        </td>
-    `;
-
-    // Add event listener to the delete button
-    const deleteButton = tr.querySelector(".delete-btn");
-    deleteButton.addEventListener("click", () => {
-        deleteSoil(id);
+        soilList.appendChild(row);
     });
+};
 
-    // Add event listener to the edit button
-    const editButton = tr.querySelector(".edit-btn");
-    editButton.addEventListener("click", () => {
-        editSoil(id, soil.type, soil.phLevel, soil.location);
-    });
-
-    // Append the new row to the table
-    soilList.appendChild(tr);
-}
-
-// Delete soil
-function deleteSoil(id) {
-    deleteSoilFromFirebase(id);
-}
-
-// Edit soil
-function editSoil(id, type, ph, loc) {
-    soilId.value = id;
-    soilType.value = type;
-    phLevel.value = ph;
-    location.value = loc;
-    document.getElementById("submit-btn").textContent = "Update Soil";
-}
-
-// Handle form submission (add or update soil)
+// Event listeners
 soilForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const id = soilId.value;
-    const type = soilType.value;
-    const ph = phLevel.value;
-    const loc = location.value;
-
-    if (id) {
-        updateSoilInFirebase(id, type, ph, loc);
-        document.getElementById("submit-btn").textContent = "Add Soil";
-        soilId.value = '';
+    if (soilIdInput.value) {
+        updateSoil(e); // Update soil if an ID is present
     } else {
-        addSoilToFirebase(type, ph, loc);
+        addSoil(e); // Add new soil
     }
-
-    soilType.value = '';
-    phLevel.value = '';
-    location.value = '';
 });
 
-// Fetch soils from Firebase
-function fetchSoils() {
-    const soilsRef = ref(database, 'soilDetails');
-    get(soilsRef).then((snapshot) => {
-        if (snapshot.exists()) {
-            const soils = snapshot.val();
-            renderSoilList(soils);
-        }
-    });
-}
-
-// Initial fetch of soils
-fetchSoils();
+// Initial loading of soil details
+loadSoils();

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* styles.css */
+    
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    form {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    input {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    button {
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid #ddd;
+    }
+    
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    button.edit,
+    button.delete {
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    
+    button.edit {
+        background-color: #2196F3;
+        color: white;
+    }
+    
+    button.delete {
+        background-color: #f44336;
+        color: white;
+    }
+</style>
+
+<body>
+    <h1>Soil Details</h1>
+    <form id="soil-form">
+        <input type="text" id="soilType" placeholder="Soil Type" required>
+        <input type="text" id="phLevel" placeholder="pH Level" required>
+        <input type="text" id="moistureContent" placeholder="Moisture Content" required>
+        <input type="text" id="nutrientLevel" placeholder="Nutrient Level" required>
+        <!-- New field -->
+        <button type="submit" id="submit-btn">Add Soil</button>
+        <input type="hidden" id="soil-id">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Soil Type</th>
+                <th>pH Level</th>
+                <th>Moisture Content</th>
+                <th>Nutrient Level</th>
+                <!-- New column -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="soil-list">
+            <!-- Dynamic soil data will be inserted here -->
+        </tbody>
+    </table>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script type="module" src="js/admin-soil.js"></script>
+</body>
+
+</html>
